@@ -6,17 +6,16 @@ Goexpose provides several command line arguments such as:
 * format - format of configuration file (json, yaml), default is json
 
 */
-package main
+package cmd
 
 import (
 	"flag"
 	"os"
-
 	"github.com/golang/glog"
-	"github.com/phonkee/goexpose"
+	"github.com/fm0l/goexpose"
 )
 
-func main() {
+func Execute() {
 	configVar := flag.String("config", "config.json", "Configuration file location")
 	formatVar := flag.String("format", "json", "Configuration file format. (json, yaml)")
 
