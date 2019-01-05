@@ -34,5 +34,5 @@ if [ -w ${go_root_dir}/pkg ]; then
 	use_go_install=1
 fi
 
-CGO_ENABLED=0 go build -installsuffix cgo -ldflags "$LD_FLAGS" -o ${BINDIR}/goexpose-linux-amd64-$version ./cmd/goexpose
+CGO_ENABLED=0 go build -installsuffix cgo -ldflags "$LD_FLAGS" -o ${BINDIR}/goexpose-linux-amd64-$version ${REPO_PATH}/cmd/goexpose
 
