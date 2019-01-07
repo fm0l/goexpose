@@ -27,7 +27,5 @@ _testmain.go
 *.prof
 
 .idea
-cmd/goexpose/goexpose
 
-run.sh
 bin/
