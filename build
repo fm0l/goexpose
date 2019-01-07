@@ -2,10 +2,10 @@
 set -e
 source $(dirname $0)/scripts/readlinkdashf.sh
 
-version=$(grep -F "VERSION = " settings.go | cut -d\" -f2)
-
 BASEDIR=$(readlinkdashf $(dirname $0))
 BINDIR=${BASEDIR}/bin
+
+version=$(grep -F "VERSION = " ${BASEDIR}/internal/settings.go | cut -d\" -f2)
 
 if [ $PWD != $BASEDIR ]; then
 	cd $BASEDIR

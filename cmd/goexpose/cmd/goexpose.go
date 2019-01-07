@@ -9,18 +9,26 @@ Goexpose provides several command line arguments such as:
 package cmd
 
 import (
+	"fmt"
 	"flag"
 	"os"
 	"github.com/golang/glog"
-	"github.com/fm0l/goexpose"
+	"github.com/fm0l/goexpose/internal"
 )
 
 func Execute() {
-	configVar := flag.String("config", "config.json", "Configuration file location")
+	var configVar string
 	formatVar := flag.String("format", "json", "Configuration file format. (json, yaml)")
-
+	configTmp := flag.String("config", "", "Configuration full path of file")
 	// Parse command line flags
 	flag.Parse()
+
+	// Configuration filename derived from format if not specified
+	if *configTmp == "" {
+		configVar = fmt.Sprintf("config.%s", *formatVar)
+	} else {
+		configVar = *configTmp
+	}
 
 	var (
 		config *goexpose.Config
@@ -29,7 +37,8 @@ func Execute() {
 	)
 
 	// read config file
-	if config, err = goexpose.NewConfigFromFilename(*configVar, *formatVar); err != nil {
+	// if config, err = goexpose.NewConfigFromFilename(*configVar, *formatVar); err != nil {
+	if config, err = goexpose.NewConfigFromFilename(configVar, *formatVar); err != nil {
 		glog.Errorf("config error: %v", err)
 		os.Exit(1)
 	}
