@@ -37,7 +37,6 @@ func Execute() {
 	)
 
 	// read config file
-	// if config, err = goexpose.NewConfigFromFilename(*configVar, *formatVar); err != nil {
 	if config, err = goexpose.NewConfigFromFilename(configVar, *formatVar); err != nil {
 		glog.Errorf("config error: %v", err)
 		os.Exit(1)
